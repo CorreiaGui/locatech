@@ -29,7 +29,7 @@ import br.com.fiap.locatech.services.VeiculoService;
 @RequestMapping("/veiculos")
 public class VeiculoController {
 
-	private static final Logger logger = LoggerFactory.getLogger(Veiculo.class);
+	private static final Logger logger = LoggerFactory.getLogger(VeiculoController.class);
 
 	@Autowired
 	private VeiculoService service;
@@ -45,9 +45,9 @@ public class VeiculoController {
 
 	@GetMapping("/{id}")
 	public ResponseEntity<Optional<Veiculo>> findVeiculoById(@PathVariable("id") Long id) {
-		logger.info("Iniciando request | findVeiculoById id: %n", id);
+		logger.info("Iniciando request | findVeiculoById id: {id}", id);
 		var veiculo = service.findVeiculoById(id);
-		logger.info("Finalizando request | findVeiculoById id: %n", id);
+		logger.info("Finalizando request | findVeiculoById id: %d", id);
 		return ResponseEntity.ok(veiculo);
 	}
 

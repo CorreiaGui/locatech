@@ -14,6 +14,8 @@ import lombok.ToString;
 @AllArgsConstructor
 @EqualsAndHashCode
 public class Pessoa {
+	
+	private Long id;
 
 	private String nome;
 	
