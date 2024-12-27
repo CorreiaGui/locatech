@@ -24,9 +24,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.fiap.locatech.entities.Veiculo;
 import br.com.fiap.locatech.services.VeiculoService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
 @RequestMapping("/veiculos")
+@Tag(name = "Veículo | ", description = "Controller para CRUD de veículos")
 public class VeiculoController {
 
 	private static final Logger logger = LoggerFactory.getLogger(VeiculoController.class);
@@ -34,6 +38,11 @@ public class VeiculoController {
 	@Autowired
 	private VeiculoService service;
 
+	@Operation(description = "Busca todos os veículos paginados",
+			summary = "Busca de veículos",
+			responses = {
+					@ApiResponse(description = "OK", responseCode = "200")
+			})
 	@GetMapping
 	public ResponseEntity<List<Veiculo>> findAllVeiculos(@RequestParam("size") int size,
 			@RequestParam("page") int page) {

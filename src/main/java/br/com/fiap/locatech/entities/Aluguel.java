@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import br.com.fiap.locatech.dtos.AluguelRequestDTO;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -18,7 +19,8 @@ import lombok.ToString;
 @AllArgsConstructor
 @EqualsAndHashCode
 public class Aluguel {
-
+	
+	@Schema(description = "Id da pessoa que aluga o veículo")
 	private Long id;
 	
 	private Long pessoaId;

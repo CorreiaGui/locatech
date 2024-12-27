@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import br.com.fiap.locatech.dtos.AluguelRequestDTO;
 import br.com.fiap.locatech.entities.Aluguel;
 import br.com.fiap.locatech.services.AluguelService;
+import jakarta.validation.Valid;
 
 @Controller
 @RequestMapping("/alugueis")
@@ -53,7 +54,7 @@ public class AluguelController {
 	}
 
 	@PostMapping
-	public ResponseEntity<Void> saveAluguel(@RequestBody AluguelRequestDTO aluguel) {
+	public ResponseEntity<Void> saveAluguel(@Valid @RequestBody AluguelRequestDTO aluguel) {
 		logger.info("Iniciando request | save aluguel: ");
 		service.saveAluguel(aluguel);
 		logger.info("Finalizando request | save aluguel: ");
