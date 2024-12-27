@@ -1,5 +1,6 @@
 package br.com.fiap.locatech.services;
 
+import static java.util.Optional.ofNullable;
 import static org.springframework.util.Assert.state;
 
 import java.math.BigDecimal;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.fiap.locatech.dtos.AluguelRequestDTO;
 import br.com.fiap.locatech.entities.Aluguel;
+import br.com.fiap.locatech.exceptions.ResourceNotFoundException;
 import br.com.fiap.locatech.repositories.VeiculoRepository;
 import br.com.fiap.locatech.repositories.aluguel.AluguelRepository;
 
@@ -31,7 +33,8 @@ public class AluguelService {
 	}
 
 	public Optional<Aluguel> findAluguelById(Long id) {
-		return this.repository.findById(id);
+		return ofNullable(this.repository.findById(id).orElseThrow(() 
+				-> new ResourceNotFoundException("Aluguel não encontrado")));
 	}
 
 	public void saveAluguel(AluguelRequestDTO aluguelDTO) {
