@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import br.com.fiap.locatech.dtos.AluguelRequestDTO;
 import br.com.fiap.locatech.entities.Aluguel;
 import br.com.fiap.locatech.services.AluguelService;
 
@@ -52,10 +53,10 @@ public class AluguelController {
 	}
 
 	@PostMapping
-	public ResponseEntity<Void> saveAluguel(@RequestBody Aluguel aluguel) {
-		logger.info("Iniciando request | save aluguel: " + aluguel.getId());
+	public ResponseEntity<Void> saveAluguel(@RequestBody AluguelRequestDTO aluguel) {
+		logger.info("Iniciando request | save aluguel: ");
 		service.saveAluguel(aluguel);
-		logger.info("Finalizando request | save aluguel: " + aluguel.getId());
+		logger.info("Finalizando request | save aluguel: ");
 		return status(OK).build();
 	}
 
